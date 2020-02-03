@@ -1,0 +1,54 @@
+@import './variables';
+h1, h2, h3, p, a.title {
+    text-decoration: none;
+    font-family: $fonts;
+    font-weight: 300;
+}
+
+section, footer {
+    margin: $margin;
+}
+
+footer {
+    display: flex;
+    height: 100px;
+    vertical-align: middle;
+    align-self: center;
+    position: relative;
+    bottom: 0;
+}
+h1#name {
+    color: $h1color;
+    font-size: 1.8rem;
+    line-height: 0px;
+}
+a.title {
+    color: $lightGrey;
+    font-size: 1.3rem;
+}
+p {
+    color: $lightGrey;
+}
+p#about {
+    font-size: 0.8rem;
+    line-height: 0px;
+}
+.links li a{
+    text-decoration: none;
+    color: $linkscolor;
+    font-family: $fonts;
+
+    &::before {
+        content: '';
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background-color: black;
+        transition: 0.2s;
+    }
+    &:hover:before {
+        width: 100%;
+    }
+}

@@ -1,0 +1,15 @@
+<%- include ('partials/header') -%> 
+<section>
+    <h1>Home</h1>
+    <p> <%= homeContent %>  </p>
+</section>
+
+<% posts.forEach( function(post) { %>
+    <section>
+        <a class="title" href="/posts/<%=post["title"]%>"> <%= post["title"] %> </a>
+        <p><%= post["post"] %></p>
+    </section>
+    <% console.log(post["title"]) %>
+<% }) %>
+
+<%- include ('partials/footer') -%> 
