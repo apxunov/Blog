@@ -6,8 +6,18 @@
 
 <% posts.forEach( function(post) { %>
     <section>
-        <a class="title" href="/posts/<%=post["title"]%>"> <%= post["title"] %> </a>
-        <p><%= post["post"] %></p>
+        
+        <% if(post["post"].length > 100) { %>
+            <a class="title" href="/posts/<%=post["title"]%>"> <%= post["title"] %> </a>
+            <div style="display: flex; align-items: center;">
+                <p><%= post["post"].substring(0,100) + "..." %></p>&nbsp;
+                <a class="btn-read-more" href="/posts/<%=post["title"]%>"> Read more </a>
+            </div>
+        <%} else { %>
+            <a class="title" href="/posts/<%=post["title"]%>"> <%= post["title"] %> </a>
+            <p><%= post["post"] %></p>
+        <% } %>
+
     </section>
     <% console.log(post["title"]) %>
 <% }) %>

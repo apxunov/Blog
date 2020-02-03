@@ -1,4 +1,4 @@
-h1, h2, h3, p, a.title {
+h1, h2, h3, p, a.title, a.btn-read-more {
   text-decoration: none;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 300;
@@ -18,6 +18,7 @@ footer {
       align-self: center;
   position: relative;
   bottom: 0;
+  margin-top: 50px;
 }
 
 h1#name {
@@ -138,9 +139,10 @@ button[type="submit"] {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1rem;
   padding: 5px 5px 5px 5px;
-  margin-top: 20px;
-  max-width: 90px;
   border-radius: 5px;
   border-color: transparent;
+  margin-top: 20px;
+  width: 90px;
 }
+
 /*# sourceMappingURL=styles.css.map */

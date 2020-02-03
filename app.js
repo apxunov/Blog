@@ -21,26 +21,11 @@ let posts = []
 
 app.get("/", function(req, res){
     postsContentVisible = []
-    posts.forEach(post => {
-        const visibleLength = 100;
-
-        if (post["post"].length > visibleLength) {
-            let visibleContent = post["post"].substring(0, visibleLength);
-
-            let visiblePost = {
-                title: post["title"],
-                post: visibleContent
-            }
-            postsContentVisible.push(visiblePost)
-        }
-        else {
-            postsContentVisible.push(post)
-        }
-    })
-
+    
     res.render("home", {
         homeContent: homeContent,
-        posts: postsContentVisible
+        posts: posts
+        // posts: postsContentVisible
     });
 })
 app.get("/about", function(req, res){
