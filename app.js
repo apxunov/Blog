@@ -44,7 +44,6 @@ const postsList = mongoose.model("postsList", postsListSchema);
 
 
 app.get("/", function(req, res){
-
     Post.find({}, function(err, foundPosts) {
         res.render("home", {
             homeContent: homeContent,
@@ -66,33 +65,33 @@ app.get("/compose", function(req, res){
     res.render("compose");
 })
 
-
+// Готовим пост. Посылаем его в базу данных. Если нет в нем ошибок, сохраняем и публикуем на home странице
 app.post("/compose", function (req, res) {
-    
+
     const post = new Post({
         title: req.body.title,
         post: req.body.post
     });
-    console.log(post);
-    post.save();
-    // res.redirect("/", {newTitle: input.title, newPost: input.post});
-    res.redirect("/")
+
+    post.save(function(err){
+        if(!err){
+            res.redirect("/");
+        }
+    });
 })
 
-// параметры маршрутов.  postName - создаем страницу, url которой будет содержать title поста
-app.get("/posts/:postName", function (req, res) {
-    let postName = _.lowerCase(req.params.postName);
-    posts.forEach(post => {
-        const storedTitle = _.lowerCase(post["title"]);
-        
-        if (storedTitle === postName) {
+// Параметры маршрутов.  postName - создаем страницу, url которой будет содержать title поста
+app.get("/posts/:postID", function (req, res) {
+    const requestedPostID = req.params.postID;
+
+    Post.findOne({_id: requestedPostID}, function(err, post){
+        if(!err){
             res.render("post", {
-                postTitle: post["title"],
-                postContent: post["post"]
-            }
-            )}
-    });
-    res.send(postName);
+                postTitle: post.title,
+                postContent: post.post
+            });
+        }
+    })
   })
 
 
