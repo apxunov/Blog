@@ -4,20 +4,23 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const mongoose = require("mongoose");
 const _ = require('lodash');
 
 
 const app = express(); //используем express
 app.set('view engine', 'ejs'); //используем ejs
 app.use(bodyParser.urlencoded({extended: true})); //используем body-parser
-
 app.use(express.static("public")); //статичные файлы (стили) располагаем в папке public, чтобы сервер мог прочитать их не только на локальном (нашем) устройстве
+
 
 const homeContent = "Posts'd be stored there";
 const aboutContent = "About me";
 const contactContent = "Contact me";
 
 let posts = []
+
+
 
 app.get("/", function(req, res){
     postsContentVisible = []
